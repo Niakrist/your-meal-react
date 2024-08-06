@@ -5,6 +5,8 @@ import cn from "classnames";
 import Order from "../order/Order";
 import Product from "../product/Product";
 
+import { goodsList } from "../../data/goodsList.js";
+
 const Catalog = () => {
   return (
     <section className={s.catalog}>
@@ -19,24 +21,11 @@ const Catalog = () => {
 
             <div className={s.catalog__wrap_list}>
               <ul className={s.catalog__list}>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
-                <li className={s.catalog__item}>
-                  <Product />
-                </li>
+                {goodsList.map((good) => (
+                  <li key={good.title} className={s.catalog__item}>
+                    <Product good={good} />
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

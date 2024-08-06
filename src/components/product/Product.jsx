@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./Product.module.css";
-const Product = () => {
+const Product = ({ good }) => {
   return (
     <article className={s.product}>
       <img
         src="./img/photo-5.jpg"
-        alt="Мясная бомба"
+        alt={good.title}
         className={s.product__image}
       />
 
@@ -14,7 +14,7 @@ const Product = () => {
       </p>
 
       <h3 className={s.product__title}>
-        <button className={s.product__detail}>Мясная бомба</button>
+        <button className={s.product__detail}>{good.title}</button>
       </h3>
 
       <p className={s.product__weight}>520г</p>
