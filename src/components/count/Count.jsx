@@ -3,7 +3,10 @@ import s from "./Count.module.css";
 const Count = ({ count, handleMinus, handlePlus }) => {
   return (
     <div className={s.count}>
-      <button onClick={handleMinus} className={s.count__minus}>
+      <button
+        onClick={handleMinus}
+        className={s.count__minus}
+        disabled={count === 1}>
         -
       </button>
       <p className={s.count__amount}>{count}</p>
