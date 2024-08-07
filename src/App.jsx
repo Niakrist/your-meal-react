@@ -1,4 +1,5 @@
 import Catalog from "./components/catalog/Catalog";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Navigation from "./components/navigation/Navigation";
 
@@ -10,6 +11,7 @@ function App() {
         <Navigation />
         <Catalog />
       </main>
+      <Footer />
     </>
   );
 }
