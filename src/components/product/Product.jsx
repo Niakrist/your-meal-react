@@ -1,7 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../constans";
+import { addToCart } from "../../store/order/orderSlice";
 import s from "./Product.module.css";
 const Product = ({ good }) => {
+  const { orderProduct } = useSelector((state) => state.order);
+  const dispatch = useDispatch();
   return (
     <article className={s.product}>
       <img
@@ -21,7 +25,10 @@ const Product = ({ good }) => {
 
       <p className={s.product__weight}>{good.weight}г</p>
 
-      <button className={s.product__add} type="button">
+      <button
+        onClick={() => dispatch(addToCart({ id: good.id, quantity: 1 }))}
+        className={s.product__add}
+        type="button">
         Добавить
       </button>
     </article>
