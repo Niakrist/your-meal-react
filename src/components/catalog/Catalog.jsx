@@ -30,7 +30,9 @@ const Catalog = () => {
               {category[activeCategory]?.rus}
             </h2>
             <div className={s.catalog__wrap_list}>
-              {product.length < 1 && <h3>Товаров нет</h3>}
+              {product.length < 1 && (
+                <h3>К сожалению товаров данной категории нет</h3>
+              )}
 
               <ul className={s.catalog__list}>
                 {product.map((good) => (
