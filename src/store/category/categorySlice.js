@@ -31,6 +31,7 @@ const categorySlice = createSlice({
       state.activeCategory = action.payload.indexCategory;
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(categoryFetch.pending, (state) => {
@@ -47,5 +48,4 @@ const categorySlice = createSlice({
 });
 
 export const { changeActiveCategory } = categorySlice.actions;
-
 export default categorySlice.reducer;

@@ -7,7 +7,6 @@ import Product from "../product/Product";
 
 import { useDispatch, useSelector } from "react-redux";
 import { productFetch } from "../../store/product/productSlice";
-import { categoryFetch } from "../../store/category/categorySlice";
 
 const Catalog = () => {
   const { product } = useSelector((state) => state.product);
@@ -30,8 +29,9 @@ const Catalog = () => {
             <h2 className={s.catalog__title}>
               {category[activeCategory]?.rus}
             </h2>
-
             <div className={s.catalog__wrap_list}>
+              {product.length < 1 && <h3>Товаров нет</h3>}
+
               <ul className={s.catalog__list}>
                 {product.map((good) => (
                   <li key={good.id} className={s.catalog__item}>
