@@ -8,15 +8,17 @@ import Container from "../container/Container";
 const Header = () => {
   return (
     <header className={s.header}>
-      <Container className={s.header__container}>
-        <img className={s.header__logo} src={logoSrc} alt="Логотип YourMeal" />
-        <div className={s.header__wrapper}>
-          <h1 className={s.header__title}>
-            <span>Только самые</span>
-            <span className={s.header__red}>сочные бургеры!</span>
-          </h1>
+      <Container>
+        <div className={s.container}>
+          <img className={s.logo} src={logoSrc} alt="Логотип YourMeal" />
+          <div className={s.wrapper}>
+            <h1 className={s.title}>
+              <span>Только самые</span>
+              <span className={s.red}>сочные бургеры!</span>
+            </h1>
 
-          <p className={s.header__appeal}>Бесплатная доставка от 599₽</p>
+            <p className={s.appeal}>Бесплатная доставка от 599₽</p>
+          </div>
         </div>
       </Container>
     </header>
