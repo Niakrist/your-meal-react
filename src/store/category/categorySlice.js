@@ -1,17 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_URL } from "../../constans";
+
+export const categoryFetch = createAsyncThunk(
+  "category/categoryFetch",
+  async () => {
+    try {
+      const response = await fetch(API_URL + "api/product/category");
+
+      if (!response.ok) throw new Error(`Возникла ошибка при получении данных`);
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return { error };
+    }
+  }
+);
 
 const initialState = {
-  category: [
-    { title: "burger", rus: "Бургеры", image: "/img/burger.png" },
-    { title: "snack", rus: "Закуски", image: "/img/snack.png" },
-    { title: "hot-dog", rus: "Хот-доги", image: "/img/hot-dog.png" },
-    { title: "combo", rus: "Комбо", image: "/img/combo.png" },
-    { title: "shawarma", rus: "Шаурма", image: "/img/shawarma.png" },
-    { title: "pizza", rus: "Пицца", image: "/img/pizza.png" },
-    { title: "wok", rus: "Вок", image: "/img/wok.png" },
-    { title: "dessert", rus: "Десерты", image: "/img/dessert.png" },
-    { title: "sauce", rus: "Соусы", image: "/img/sauce.png" },
-  ],
+  category: [],
   error: "",
   activeCategory: 0,
 };
@@ -23,6 +30,19 @@ const categorySlice = createSlice({
     changeActiveCategory: (state, action) => {
       state.activeCategory = action.payload.indexCategory;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(categoryFetch.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(categoryFetch.fulfilled, (state, action) => {
+        state.category = action.payload;
+        state.error = null;
+      })
+      .addCase(categoryFetch.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 
