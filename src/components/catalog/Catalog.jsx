@@ -23,23 +23,20 @@ const Catalog = () => {
         <div className={cn(s.catalog__order, s.order)}>
           <Order />
         </div>
-          <div className={s.catalog__wrapper}>
-            <h2 className={s.catalog__title}>
-              {category[activeCategory]?.rus}
-            </h2>
-            <div className={s.catalog__wrap_list}>
-              {product.length < 1 && (
-                <h3>К сожалению товаров данной категории нет</h3>
-              )}
+        <div className={s.catalog__wrapper}>
+          <h2 className={s.catalog__title}>{category[activeCategory]?.rus}</h2>
+          <div className={s.catalog__wrap_list}>
+            {product.length < 1 && (
+              <h3>К сожалению товаров данной категории нет</h3>
+            )}
 
-              <ul className={s.catalog__list}>
-                {product.map((good) => (
-                  <li key={good.id} className={s.catalog__item}>
-                    <Product good={good} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className={s.catalog__list}>
+              {product.map((good) => (
+                <li key={good.id} className={s.catalog__item}>
+                  <Product good={good} />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>
