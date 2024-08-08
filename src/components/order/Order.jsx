@@ -3,6 +3,7 @@ import s from "./Order.module.css";
 import Goods from "../goods/Goods";
 import { useDispatch, useSelector } from "react-redux";
 import { orderRequestAsync } from "../../store/order/orderSlice";
+import { toggleModal } from "../../store/modal/modalSlice";
 
 const Order = () => {
   const { orderGoods, totalPrice, totalCount, orderProduct } = useSelector(
@@ -39,7 +40,12 @@ const Order = () => {
           </p>
         </div>
 
-        <button className={s.order__submit}>Оформить заказ</button>
+        <button
+          onClick={() => dispatch(toggleModal(true))}
+          disabled={totalCount === 0}
+          className={s.order__submit}>
+          Оформить заказ
+        </button>
 
         <div className={s.order__apeal}>
           <p className={s.order__text}>Бесплатная доставка</p>

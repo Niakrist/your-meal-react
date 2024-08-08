@@ -90,6 +90,11 @@
   margin-bottom: 8px;
 }
 
+.order__submit:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
 .order__apeal {
   display: flex;
   align-items: center;

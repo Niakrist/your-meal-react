@@ -34,7 +34,6 @@ const orderSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      console.log("action.payload: ", action.payload);
       const productOrderList = state.orderProduct.find((item) => {
         return item.id === action.payload.id;
       });
@@ -83,6 +82,10 @@ const orderSlice = createSlice({
         );
       }
     },
+    clearOrder: (state) => {
+      state.orderProduct = [];
+      state.orderGoods = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -110,6 +113,6 @@ const orderSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart } = orderSlice.actions;
+export const { addToCart, removeFromCart, clearOrder } = orderSlice.actions;
 
 export default orderSlice.reducer;
